@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andmejälgija – praegune vaade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:wght@500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="proto-nav" aria-label="Prototüübi vaated">
+  <div class="proto-nav-inner">
+    <strong>Andmejälgija prototüüp</strong>
+    <a href="index.html">Avaleht</a>
+    <a href="andmevaljad.html">Andmeväljad</a>
+    <a href="praegune.html" aria-current="page">Praegune vaade</a>
+    <a href="uus.html">Uus vaade</a>
+    <a href="kusitlus.html">Küsitluse A/B</a>
+  </div>
+</nav>
+
+<main class="scroll-x">
+<div style="min-width: 1100px; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column">
+  <div style="height: 64px; padding: 0 48px; background: #16202C; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between">
+    <div style="font-weight: 600; font-size: 18px">Riigiportaal</div>
+    <div style="font-size: 14px">Minu andmed · Andmejälgija</div>
+  </div>
+  <div style="padding: 40px 48px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <h1 style="margin: 0; font-family: 'IBM Plex Serif', Georgia, serif; font-size: 36px; font-weight: 600">Andmejälgija</h1>
+      <div style="font-size: 13px; padding: 4px 10px; border: 1px solid #8A3B00; color: #8A3B00; border-radius: 4px">Näidisandmed</div>
+    </div>
+    <p style="margin: 0; font-size: 16px; color: #4A5563; max-width: 760px">Siin näed, kes on sinu isikuandmeid andmekogudest pärinud.</p>
+    <div style="display: flex; gap: 16px; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="aj-db" style="font-size: 14px; font-weight: 500">Andmekogu</label>
+        <select id="aj-db" style="height: 44px; width: 320px; padding: 0 12px; font-size: 15px; border: 1px solid #9AA3AE; border-radius: 4px; background: #FFFFFF"><option>Kõik andmekogud</option></select>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="aj-period" style="font-size: 14px; font-weight: 500">Periood</label>
+        <select id="aj-period" style="height: 44px; width: 240px; padding: 0 12px; font-size: 15px; border: 1px solid #9AA3AE; border-radius: 4px; background: #FFFFFF"><option>Viimased 30 päeva</option></select>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 24px; font-size: 15px; font-weight: 500; background: #1E4F8F; color: #FFFFFF; border: 0; border-radius: 4px">Otsi</button>
+    </div>
+    <div style="background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; overflow: hidden">
+      <div style="display: grid; grid-template-columns: 180px 300px minmax(0, 1fr) 240px; background: #ECEAE4; font-size: 14px; font-weight: 600">
+        <div style="padding: 14px 20px">Aeg</div>
+        <div style="padding: 14px 20px">Kes andmeid töötles</div>
+        <div style="padding: 14px 20px">Tegevus</div>
+        <div style="padding: 14px 20px">Andmekogu</div>
+      </div>
+      <div id="kirjed"></div>
+    </div>
+    <div style="font-size: 14px; color: #4A5563">Kokku 8 kirjet</div>
+  </div>
+</div>
+</main>
+
+<footer class="proto-footer">Näidisandmed. Üliõpilasprojekti prototüüp, ei ole ametlik riigi teenus.</footer>
+
+<script>
+  var rows = [
+    { time: '21.09.2026 14:32', code: '70010001', name: '', action: 'RR isiku päring', db: 'Rahvastikuregister' },
+    { time: '18.09.2026 09:05', code: '70010002', name: 'Sotsiaalkindlustusamet', action: 'Päring', db: 'Töötamise register' },
+    { time: '15.09.2026 03:00', code: '70010003', name: '', action: 'findPersonIncome', db: 'Töötamise register' },
+    { time: '12.09.2026 10:14', code: '70010004', name: 'Töötukassa', action: 'Andmete edastamine', db: 'Rahvastikuregister' },
+    { time: '12.09.2026 10:14', code: '70010002', name: '', action: 'Aadressi muutuse teavitus', db: 'Rahvastikuregister' },
+    { time: '12.09.2026 10:14', code: '70010003', name: 'Maksu- ja Tolliamet', action: 'Isiku andmete päring', db: 'Rahvastikuregister' },
+    { time: '12.09.2026 10:15', code: '70010005', name: '', action: 'RR_sündmus_v2', db: 'Rahvastikuregister' },
+    { time: '10.09.2026 11:47', code: '3900101xxxx', name: '', action: 'Kinnistusraamatu päring', db: 'Kinnistusraamat' }
+  ];
+  document.getElementById('kirjed').innerHTML = rows.map(function (r) {
+    return '<div style="display: grid; grid-template-columns: 180px 300px minmax(0, 1fr) 240px; border-top: 1px solid #E5E2DA; font-size: 15px">' +
+      '<div style="padding: 14px 20px; color: #4A5563">' + r.time + '</div>' +
+      '<div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 2px"><span>' + r.code + '</span>' +
+      (r.name ? '<span style="font-size: 13px; color: #4A5563">' + r.name + '</span>' : '') + '</div>' +
+      '<div style="padding: 14px 20px">' + r.action + '</div>' +
+      '<div style="padding: 14px 20px; color: #4A5563">' + r.db + '</div>' +
+      '</div>';
+  }).join('');
+</script>
+</body>
+</html>

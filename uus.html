@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andmejälgija – uus vaade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:wght@500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .pill { font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .pill-human { background: #FCE9D6; color: #8A3B00; }
+  .pill-auto { background: #E6ECF3; color: #2A3F57; }
+  .card { background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .btn { height: 44px; padding: 0 18px; font-size: 14px; border-radius: 4px; }
+  .btn-primary { background: #1E4F8F; color: #FFFFFF; border: 0; font-weight: 500; }
+  .btn-outline { background: #FFFFFF; color: #1E4F8F; border: 1px solid #9AA3AE; }
+  .btn-warn { background: #FFFFFF; color: #8A3B00; border: 1px solid #8A3B00; }
+  .indent { margin-left: 170px; }
+  .details { display: grid; grid-template-columns: 220px minmax(0, 1fr); row-gap: 10px; column-gap: 16px; padding: 16px 20px; background: #F7F6F2; border-radius: 4px; font-size: 15px; }
+  .muted { color: #4A5563; }
+</style>
+</head>
+<body>
+<nav class="proto-nav" aria-label="Prototüübi vaated">
+  <div class="proto-nav-inner">
+    <strong>Andmejälgija prototüüp</strong>
+    <a href="index.html">Avaleht</a>
+    <a href="andmevaljad.html">Andmeväljad</a>
+    <a href="praegune.html">Praegune vaade</a>
+    <a href="uus.html" aria-current="page">Uus vaade</a>
+    <a href="kusitlus.html">Küsitluse A/B</a>
+  </div>
+</nav>
+
+<main class="scroll-x">
+<div style="min-width: 1100px; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column">
+  <div style="height: 64px; padding: 0 48px; background: #16202C; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between">
+    <div style="font-weight: 600; font-size: 18px">Riigiportaal</div>
+    <div style="font-size: 14px">Minu andmed · Andmejälgija</div>
+  </div>
+  <div style="padding: 40px 48px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <h1 style="margin: 0; font-family: 'IBM Plex Serif', Georgia, serif; font-size: 36px; font-weight: 600">Kes kasutas sinu andmeid</h1>
+      <div style="font-size: 13px; padding: 4px 10px; border: 1px solid #8A3B00; color: #8A3B00; border-radius: 4px">Näidisandmed</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="padding: 20px; gap: 4px">
+        <div id="human-count" style="font-size: 32px; font-weight: 600; color: #8A3B00"></div>
+        <div style="font-size: 15px">korral vaatas sinu andmeid inimene</div>
+      </div>
+      <div class="card" style="padding: 20px; gap: 4px">
+        <div id="auto-count" style="font-size: 32px; font-weight: 600; color: #2A3F57"></div>
+        <div style="font-size: 15px">automaatset päringut süsteemide vahel</div>
+      </div>
+      <div class="card" style="padding: 20px; gap: 4px">
+        <div style="font-size: 15px; font-weight: 600">Viimased 30 päeva</div>
+        <div class="muted" style="font-size: 14px">Näidatakse [N] liidestatud andmekogu kirjeid.</div>
+        <a href="#katvus" style="font-size: 14px">Mis siin ei kajastu?</a>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div class="muted" style="font-size: 15px">Uuemad eespool</div>
+      <button type="button" id="filter-btn" class="btn" style="padding: 0 20px; font-size: 15px; font-weight: 500; border: 1px solid #1E4F8F"></button>
+    </div>
+
+    <div id="list" style="display: flex; flex-direction: column; gap: 12px"></div>
+
+    <div id="katvus" class="card" style="gap: 8px">
+      <div style="font-size: 16px; font-weight: 600">Mis siin ei kajastu</div>
+      <div style="font-size: 15px; color: #2E3A48; max-width: 900px">Andmejälgija näitab ainult liidestatud andmekogude kirjeid. Osa andmekogusid ei ole veel liidestatud ja seadusega lubatud juhtudel (näiteks käimasolev menetlus) võidakse kirje avaldada hiljem.</div>
+      <a href="#katvus" style="font-size: 15px">Vaata liidestatud ja liidestamata andmekogude nimekirja</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="proto-footer">Näidisandmed. Nupud on simulatsioon, midagi ei saadeta. Üliõpilasprojekti prototüüp, ei ole ametlik riigi teenus.</footer>
+
+<script>
+(function () {
+  var recs = [
+    { id: 'AJ-2026-0921-4821', date: '21.09.2026', time: '14:32', human: true, source: 'Rahvastikuregister',
+      purpose: 'Isiku tuvastamine väärteomenetluses', who: 'Politsei- ja Piirivalveamet, menetlusosakond',
+      orgShort: 'Politsei- ja Piirivalveamet', org: 'Politsei- ja Piirivalveamet · menetlusosakond', role: 'Menetleja',
+      law: 'Väärteomenetluse seadustik § [X]', data: 'Nimi, isikukood, elukoha aadress',
+      caseRef: 'Väärteoasi nr [VIIDE]', contact: '[ASUTUSE ANDMEKAITSE KONTAKT]' },
+    { id: 'AJ-2026-0918-1177', date: '18.09.2026', time: '09:05', human: true, source: 'Töötamise register',
+      purpose: 'Sinu vanaduspensioni taotluse menetlemine', who: 'Sotsiaalkindlustusamet, pensionite osakond',
+      orgShort: 'Sotsiaalkindlustusamet', org: 'Sotsiaalkindlustusamet · pensionite osakond', role: 'Pensionispetsialist',
+      law: 'Riikliku pensionikindlustuse seadus § [X]', data: 'Töötamise perioodid, tööandjad',
+      caseRef: 'Taotlus nr [VIIDE]', contact: '[ASUTUSE ANDMEKAITSE KONTAKT]' },
+    { id: 'AJ-2026-0915-0032', date: '15.09.2026', time: '03:00', human: false, source: 'Töötamise register',
+      purpose: 'Tuludeklaratsiooni eeltäitmine', who: 'Maksu- ja Tolliamet, automaatne päring',
+      orgShort: 'Maksu- ja Tolliamet', org: 'Maksu- ja Tolliamet', role: 'Süsteem (inimene andmeid ei vaadanud)',
+      law: 'Tulumaksuseadus § [X]', data: 'Tööandjad, väljamaksete summad',
+      caseRef: 'Puudub', contact: '[ASUTUSE ANDMEKAITSE KONTAKT]' },
+    { id: 'AJ-2026-0910-2290', date: '10.09.2026', time: '11:47', human: true, source: 'Kinnistusraamat',
+      purpose: 'Kinnistusraamatu päring (tegija märkis: isiklik otstarve)', who: 'Eraisik, sisse logitud ID-kaardiga',
+      orgShort: 'Registrite ja Infosüsteemide Keskus', org: 'Eraisik (päring tehti avaliku e-teenuse kaudu)', role: 'Eraisik',
+      law: 'Kinnistusraamatuseadus § [X]', data: 'Kinnistu omaniku nimi',
+      caseRef: 'Puudub', contact: '[REGISTRIPIDAJA KONTAKT]' }
+  ];
+  var groupRows = [
+    { org: 'Töötukassa', why: 'Kontaktaadressi uuendamine' },
+    { org: 'Sotsiaalkindlustusamet', why: 'Toetuste ja teavituste aadressi uuendamine' },
+    { org: 'Maksu- ja Tolliamet', why: 'Maksumaksja aadressi uuendamine' },
+    { org: 'Tervisekassa', why: 'Perearsti nimistu piirkonna kontroll' }
+  ];
+  var state = { onlyHuman: false, open: null, ask: null, flagged: {}, sent: {}, groupOpen: false };
+
+  document.getElementById('human-count').textContent = recs.filter(function (r) { return r.human; }).length;
+  document.getElementById('auto-count').textContent = recs.filter(function (r) { return !r.human; }).length + groupRows.length;
+
+  function recordHtml(r) {
+    var isOpen = state.open === r.id;
+    var isSent = !!state.sent[r.id];
+    var isAsk = state.ask === r.id && !isSent;
+    var isFlagged = !!state.flagged[r.id];
+    var h = '<div class="card">';
+    h += '<div style="display: flex; gap: 20px; align-items: flex-start">';
+    h += '<div style="width: 150px; flex-shrink: 0; display: flex; flex-direction: column; gap: 2px">' +
+         '<div style="font-size: 15px; font-weight: 500">' + r.date + '</div>' +
+         '<div class="muted" style="font-size: 14px">' + r.time + '</div></div>';
+    h += '<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">' +
+         '<div style="display: flex; gap: 10px; align-items: center">' +
+         (r.human ? '<span class="pill pill-human">Vaatas inimene</span>' : '<span class="pill pill-auto">Automaatne päring</span>') +
+         '<span class="muted" style="font-size: 14px">' + r.source + '</span></div>' +
+         '<div style="font-size: 18px; font-weight: 600">' + r.purpose + '</div>' +
+         '<div style="font-size: 15px; color: #2E3A48">' + r.who + '</div></div>';
+    h += '<button type="button" class="btn btn-outline" style="padding: 0 16px; flex-shrink: 0" data-action="toggle" data-id="' + r.id + '" aria-expanded="' + isOpen + '">' +
+         (isOpen ? 'Peida üksikasjad' : 'Näita üksikasju') + '</button>';
+    h += '</div>';
+
+    if (isOpen) {
+      h += '<div class="details indent">' +
+           '<div class="muted">Asutus ja üksus</div><div>' + r.org + '</div>' +
+           '<div class="muted">Roll</div><div>' + r.role + '</div>' +
+           '<div class="muted">Õiguslik alus</div><div><a href="https://www.riigiteataja.ee">' + r.law + '</a></div>' +
+           '<div class="muted">Vaadatud andmed</div><div>' + r.data + '</div>' +
+           '<div class="muted">Menetluse viide</div><div>' + r.caseRef + '</div>' +
+           '<div class="muted">Kontakt</div><div>' + r.contact + '</div>' +
+           '<div class="muted">Kirje tunnus</div><div class="muted">' + r.id + '</div></div>';
+    }
+
+    h += '<div class="indent" style="display: flex; gap: 12px">' +
+         '<button type="button" class="btn btn-primary" data-action="ask" data-id="' + r.id + '">Küsi selgitust</button>' +
+         '<button type="button" class="btn btn-warn" data-action="flag" data-id="' + r.id + '" aria-pressed="' + isFlagged + '">' +
+         (isFlagged ? 'Võta märge tagasi' : 'Ei tunne ära') + '</button></div>';
+
+    if (isFlagged) {
+      h += '<div class="indent" style="padding: 12px 16px; background: #FCE9D6; color: #5E2800; border-radius: 4px; font-size: 14px">Märgitud. Teade läheb asutuse andmekaitsespetsialistile; korduvad märked jõuavad ka Andmekaitse Inspektsiooni ülevaatesse.</div>';
+    }
+    if (isAsk) {
+      h += '<div class="indent" style="padding: 16px 20px; border: 1px solid #1E4F8F; border-radius: 4px; display: flex; flex-direction: column; gap: 12px">' +
+           '<div style="font-size: 15px; font-weight: 600">Pöördumine: ' + r.orgShort + '</div>' +
+           '<div style="font-size: 14px; color: #2E3A48; background: #F7F6F2; padding: 12px; border-radius: 4px">Palun selgitage kirjet ' + r.id + ' (' + r.date + ' ' + r.time + '): miks minu andmeid vaadati ja mida nendega tehti.</div>' +
+           '<label for="extra-' + r.id + '" style="font-size: 14px; font-weight: 500">Sinu lisaküsimus (valikuline)</label>' +
+           '<textarea id="extra-' + r.id + '" rows="3" style="font-family: inherit; font-size: 15px; padding: 10px; border: 1px solid #9AA3AE; border-radius: 4px"></textarea>' +
+           '<div style="display: flex; gap: 12px; align-items: center">' +
+           '<button type="button" class="btn btn-primary" data-action="send" data-id="' + r.id + '">Saada pöördumine</button>' +
+           '<span class="muted" style="font-size: 13px">Vastus tuleb hiljemalt 30 päeva jooksul.</span></div></div>';
+    }
+    if (isSent) {
+      h += '<div class="indent" style="padding: 12px 16px; background: #E3EFE6; color: #1D4A2A; border-radius: 4px; font-size: 14px">Pöördumine saadetud. Staatust näed jaotises „Minu pöördumised“.</div>';
+    }
+    h += '</div>';
+    return h;
+  }
+
+  function groupHtml() {
+    var h = '<div class="card">' +
+      '<div style="display: flex; gap: 20px; align-items: flex-start">' +
+      '<div style="width: 150px; flex-shrink: 0; display: flex; flex-direction: column; gap: 2px">' +
+      '<div style="font-size: 15px; font-weight: 500">12.09.2026</div><div class="muted" style="font-size: 14px">10:14–10:15</div></div>' +
+      '<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">' +
+      '<div style="display: flex; gap: 10px; align-items: center"><span class="pill pill-auto">Automaatne · 4 päringut</span><span class="muted" style="font-size: 14px">Rahvastikuregister</span></div>' +
+      '<div style="font-size: 18px; font-weight: 600">Sinu elukoha muutmisest teavitati 4 asutust</div>' +
+      '<div style="font-size: 15px; color: #2E3A48">Aadressi muutmine käivitas seadusest tuleneva automaatse teavituse. Ükski inimene andmeid ei vaadanud.</div></div>' +
+      '<button type="button" class="btn btn-outline" style="padding: 0 16px; flex-shrink: 0" data-action="group" aria-expanded="' + state.groupOpen + '">' +
+      (state.groupOpen ? 'Peida asutused' : 'Näita asutusi') + '</button></div>';
+    if (state.groupOpen) {
+      h += '<div class="indent" style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">' +
+        groupRows.map(function (g) {
+          return '<div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; padding: 10px 16px; background: #F7F6F2; border-radius: 4px">' +
+                 '<div style="font-weight: 500">' + g.org + '</div><div style="color: #2E3A48">' + g.why + '</div></div>';
+        }).join('') + '</div>';
+    }
+    return h + '</div>';
+  }
+
+  function render() {
+    var items = recs.filter(function (r) { return !state.onlyHuman || r.human; });
+    var html = items.map(recordHtml).join('');
+    if (!state.onlyHuman) html += groupHtml();
+    document.getElementById('list').innerHTML = html;
+
+    var fb = document.getElementById('filter-btn');
+    fb.textContent = state.onlyHuman ? 'Näita kõiki kirjeid' : 'Näita ainult inimeste tehtud';
+    fb.setAttribute('aria-pressed', state.onlyHuman);
+    fb.style.background = state.onlyHuman ? '#1E4F8F' : '#FFFFFF';
+    fb.style.color = state.onlyHuman ? '#FFFFFF' : '#1E4F8F';
+  }
+
+  document.getElementById('filter-btn').addEventListener('click', function () {
+    state.onlyHuman = !state.onlyHuman;
+    render();
+  });
+
+  document.getElementById('list').addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    switch (btn.getAttribute('data-action')) {
+      case 'toggle': state.open = state.open === id ? null : id; break;
+      case 'ask': state.ask = state.ask === id ? null : id; break;
+      case 'send': state.sent[id] = true; state.ask = null; break;
+      case 'flag': state.flagged[id] = !state.flagged[id]; break;
+      case 'group': state.groupOpen = !state.groupOpen; break;
+    }
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

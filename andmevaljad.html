@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andmeväljad – praegu ja ettepanek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:wght@500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="proto-nav" aria-label="Prototüübi vaated">
+  <div class="proto-nav-inner">
+    <strong>Andmejälgija prototüüp</strong>
+    <a href="index.html">Avaleht</a>
+    <a href="andmevaljad.html" aria-current="page">Andmeväljad</a>
+    <a href="praegune.html">Praegune vaade</a>
+    <a href="uus.html">Uus vaade</a>
+    <a href="kusitlus.html">Küsitluse A/B</a>
+  </div>
+</nav>
+
+<main class="scroll-x">
+<div style="min-width: 1100px; max-width: 1440px; margin: 0 auto; padding: 56px 64px; display: flex; flex-direction: column; gap: 32px">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #4A5563">ÜKS KIRJE, KAKS VARIANTI</div>
+      <h1 style="margin: 0; font-family: 'IBM Plex Serif', Georgia, serif; font-size: 40px; font-weight: 600">Mida kodanik kirjest näeb</h1>
+    </div>
+    <div style="font-size: 13px; padding: 4px 10px; border: 1px solid #8A3B00; color: #8A3B00; border-radius: 4px">Näidisandmed</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 15px; font-weight: 600; color: #4A5563">PRAEGU</div>
+      <div style="background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; overflow: hidden">
+        <div style="display: grid; grid-template-columns: 150px 140px minmax(0, 1fr); background: #ECEAE4; font-size: 13px; font-weight: 600">
+          <div style="padding: 12px 16px">Aeg</div>
+          <div style="padding: 12px 16px">Kes</div>
+          <div style="padding: 12px 16px">Tegevus</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 150px 140px minmax(0, 1fr); font-size: 16px">
+          <div style="padding: 16px; color: #4A5563">21.09.2026 14:32</div>
+          <div style="padding: 16px">Dr Tamm</div>
+          <div style="padding: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 14px">TIS_ehl_query_v3</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+        <div style="display: flex; gap: 10px; align-items: baseline"><span style="font-weight: 600; color: #8A3B00; width: 120px; flex-shrink: 0">Puudub</span><span>Asutus: kodanik ei tea, millisest haiglast on jutt</span></div>
+        <div style="display: flex; gap: 10px; align-items: baseline"><span style="font-weight: 600; color: #8A3B00; width: 120px; flex-shrink: 0">Krüptiline</span><span>Tegevus on tehniline päringu nimi, mitte põhjus</span></div>
+        <div style="display: flex; gap: 10px; align-items: baseline"><span style="font-weight: 600; color: #8A3B00; width: 120px; flex-shrink: 0">Puudub</span><span>Õiguslik alus ja vaadatud andmed</span></div>
+        <div style="display: flex; gap: 10px; align-items: baseline"><span style="font-weight: 600; color: #8A3B00; width: 120px; flex-shrink: 0">Ebaselge</span><span>Kas andmeid vaatas inimene või süsteem</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 15px; font-weight: 600; color: #1E4F8F">ETTEPANEK</div>
+      <div style="background: #FFFFFF; border: 1px solid #1E4F8F; border-radius: 6px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 10px; align-items: center">
+          <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #FCE9D6; color: #8A3B00">Vaatas inimene</span>
+          <span style="font-size: 14px; color: #4A5563">21.09.2026 14:32 · Tervise infosüsteem</span>
+        </div>
+        <div style="font-size: 19px; font-weight: 600">Tervishoiuteenuse osutamine: patsiendi raviandmete vaatamine</div>
+        <div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 150px; row-gap: 10px; column-gap: 12px; font-size: 15px; align-items: baseline">
+          <div style="color: #4A5563">Asutus</div><div>[Tervishoiuasutus] · sisehaiguste osakond</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #2A3F57">initiatorOrg</div>
+          <div style="color: #4A5563">Roll</div><div>Arst (dr Tamm)</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #2A3F57">uus: role</div>
+          <div style="color: #4A5563">Eesmärk</div><div>Kood TERV-01 kataloogist</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #2A3F57">purpose + kood</div>
+          <div style="color: #4A5563">Õiguslik alus</div><div><a href="https://www.riigiteataja.ee">Tervishoiuteenuste korraldamise seadus § [X]</a></div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #2A3F57">legalBasis</div>
+          <div style="color: #4A5563">Vaadatud andmed</div><div>Diagnoosid, ravimid</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #2A3F57">uus: dataCategories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 600">Väljad: v3 praegu ja ettepanek</h2>
+    <div style="background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; overflow: hidden">
+      <div style="display: grid; grid-template-columns: 220px 260px 300px minmax(0, 1fr); background: #ECEAE4; font-size: 14px; font-weight: 600">
+        <div style="padding: 12px 18px">Mida kodanik näeb</div>
+        <div style="padding: 12px 18px">v3 väli</div>
+        <div style="padding: 12px 18px">v3 staatus</div>
+        <div style="padding: 12px 18px">Ettepanek</div>
+      </div>
+      <div id="valjad-read"></div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="proto-footer">Näidisandmed. Üliõpilasprojekti prototüüp, ei ole ametlik riigi teenus.</footer>
+
+<script>
+  var rows = [
+    { what: 'Asutus', field: 'initiatorOrg', now: 'Asutus VÕI isik (üks piisab)', proposal: 'Alati kohustuslik, ka siis kui isik on olemas' },
+    { what: 'Üksus ja roll', field: '—', now: 'Puudub', proposal: 'Uus väli, kohustuslik inimese tehtud vaatamisel' },
+    { what: 'Eesmärk', field: 'purpose', now: 'Kohustuslik, vabatekst', proposal: 'Kood ühtsest eesmärkide kataloogist + inimkeelne tekst' },
+    { what: 'Õiguslik alus', field: 'legalBasis', now: 'Valikuline, vabatekst', proposal: 'Kohustuslik, viide Riigi Teatajale' },
+    { what: 'Inimene või süsteem', field: 'processingType, bulkProcessing', now: 'Ainult kaudselt tuletatav', proposal: 'Selge tunnus: inimene / automaatne' },
+    { what: 'Vaadatud andmed', field: '—', now: 'Puudub', proposal: 'Uus väli: andmekategooriate loend' }
+  ];
+  document.getElementById('valjad-read').innerHTML = rows.map(function (r) {
+    return '<div style="display: grid; grid-template-columns: 220px 260px 300px minmax(0, 1fr); border-top: 1px solid #E5E2DA; font-size: 15px">' +
+      '<div style="padding: 12px 18px; font-weight: 500">' + r.what + '</div>' +
+      '<div style="padding: 12px 18px; font-family: \'IBM Plex Mono\', monospace; font-size: 13px; color: #2A3F57">' + r.field + '</div>' +
+      '<div style="padding: 12px 18px; color: #4A5563">' + r.now + '</div>' +
+      '<div style="padding: 12px 18px">' + r.proposal + '</div>' +
+      '</div>';
+  }).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: #F4F3EF;
+  color: #16202C;
+}
+a { color: #1E4F8F; }
+a:hover { color: #123661; }
+button { font-family: inherit; cursor: pointer; }
+
+/* Projekti navigatsioon (ei ole osa kujutatavast eesti.ee vaatest) */
+.proto-nav {
+  background: #E9E6DE;
+  border-bottom: 1px solid #D9D6CE;
+  font-size: 14px;
+}
+.proto-nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+}
+.proto-nav strong { margin-right: 8px; }
+.proto-nav a { text-decoration: none; padding: 6px 0; }
+.proto-nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; color: #16202C; }
+
+/* Laiad paigutused kerivad väikesel ekraanil horisontaalselt */
+.scroll-x { overflow-x: auto; }
+
+.proto-footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+  font-size: 13px;
+  color: #4A5563;
+}

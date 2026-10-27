@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Küsitluse A/B kõrvutus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Serif:wght@500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="proto-nav" aria-label="Prototüübi vaated">
+  <div class="proto-nav-inner">
+    <strong>Andmejälgija prototüüp</strong>
+    <a href="index.html">Avaleht</a>
+    <a href="andmevaljad.html">Andmeväljad</a>
+    <a href="praegune.html">Praegune vaade</a>
+    <a href="uus.html">Uus vaade</a>
+    <a href="kusitlus.html" aria-current="page">Küsitluse A/B</a>
+  </div>
+</nav>
+
+<main class="scroll-x">
+<div style="min-width: 1000px; max-width: 1280px; margin: 0 auto; padding: 48px; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <h1 style="margin: 0; font-family: 'IBM Plex Serif', Georgia, serif; font-size: 32px; font-weight: 600">Sama sündmus, kaks esitust</h1>
+    <p style="margin: 0; font-size: 16px; color: #4A5563">Kujuta ette, et näed seda kirjet oma Andmejälgijas. Vasta mõlema variandi kohta.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #4A5563">VARIANT A</div>
+      <div style="background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; overflow: hidden">
+        <div style="display: grid; grid-template-columns: 150px 130px minmax(0, 1fr); background: #ECEAE4; font-size: 13px; font-weight: 600">
+          <div style="padding: 12px 16px">Aeg</div>
+          <div style="padding: 12px 16px">Kes</div>
+          <div style="padding: 12px 16px">Tegevus</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 150px 130px minmax(0, 1fr); font-size: 15px">
+          <div style="padding: 14px 16px; color: #4A5563">21.09.2026 14:32</div>
+          <div style="padding: 14px 16px">70010001</div>
+          <div style="padding: 14px 16px">RR isiku päring</div>
+        </div>
+      </div>
+      <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="font-size: 15px; font-weight: 500; padding: 0; margin-bottom: 10px">Kui hästi saad aru, kes ja miks sinu andmeid vaatas?</legend>
+        <div style="display: flex; gap: 20px; font-size: 15px">
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qa"> 1</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qa"> 2</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qa"> 3</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qa"> 4</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qa"> 5</label>
+        </div>
+      </fieldset>
+      <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="font-size: 15px; font-weight: 500; padding: 0; margin-bottom: 10px">Mida selle kirje nägemise järel teeksid?</legend>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="aa"> Ei midagi, see on korras</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="aa"> Otsiksin ise infot juurde</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="aa"> Pöörduksin asutuse poole</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="aa"> Ei tea, kelle poole pöörduda</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #4A5563">VARIANT B</div>
+      <div style="background: #FFFFFF; border: 1px solid #D9D6CE; border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center">
+          <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #FCE9D6; color: #8A3B00">Vaatas inimene</span>
+          <span style="font-size: 14px; color: #4A5563">21.09.2026 14:32 · Rahvastikuregister</span>
+        </div>
+        <div style="font-size: 18px; font-weight: 600">Isiku tuvastamine väärteomenetluses</div>
+        <div style="font-size: 15px; color: #2E3A48">Politsei- ja Piirivalveamet, menetlusosakond · roll: menetleja</div>
+        <div style="font-size: 14px; color: #2E3A48">Alus: <a href="https://www.riigiteataja.ee">Väärteomenetluse seadustik § [X]</a> · Vaadati: nimi, isikukood, elukoht</div>
+        <div style="display: flex; gap: 10px; padding-top: 6px">
+          <button type="button" style="height: 44px; padding: 0 16px; font-size: 14px; font-weight: 500; background: #1E4F8F; color: #FFFFFF; border: 0; border-radius: 4px">Küsi selgitust</button>
+          <button type="button" style="height: 44px; padding: 0 16px; font-size: 14px; background: #FFFFFF; color: #8A3B00; border: 1px solid #8A3B00; border-radius: 4px">Ei tunne ära</button>
+        </div>
+      </div>
+      <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="font-size: 15px; font-weight: 500; padding: 0; margin-bottom: 10px">Kui hästi saad aru, kes ja miks sinu andmeid vaatas?</legend>
+        <div style="display: flex; gap: 20px; font-size: 15px">
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qb"> 1</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qb"> 2</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qb"> 3</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qb"> 4</label>
+          <label style="display: flex; gap: 6px; align-items: center"><input type="radio" name="qb"> 5</label>
+        </div>
+      </fieldset>
+      <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="font-size: 15px; font-weight: 500; padding: 0; margin-bottom: 10px">Mida selle kirje nägemise järel teeksid?</legend>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="ab"> Ei midagi, see on korras</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="ab"> Otsiksin ise infot juurde</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="ab"> Pöörduksin asutuse poole</label>
+          <label style="display: flex; gap: 8px; align-items: center"><input type="radio" name="ab"> Ei tea, kelle poole pöörduda</label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div style="font-size: 13px; color: #4A5563">Skaala: 1 = ei saa üldse aru, 5 = saan täielikult aru. Näidisandmed. Vastuseid ei salvestata.</div>
+</div>
+</main>
+
+<footer class="proto-footer">Näidisandmed. Üliõpilasprojekti prototüüp, ei ole ametlik riigi teenus.</footer>
+</body>
+</html>
